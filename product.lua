@@ -1,8 +1,6 @@
--- ts file was generated at discord.gg/25ms
-
 local _MarketplaceService = game:GetService('MarketplaceService')
 local _LocalPlayer = game:GetService('Players').LocalPlayer
-local u3 = loadstring(game:HttpGet('https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua'))()
+local u3 = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 local v4 = loadstring(game:HttpGet('https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua'))()
 local v5 = loadstring(game:HttpGet('https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua'))()
 local v6 = u3
@@ -33,7 +31,10 @@ local u13 = {}
 
 local function u20(p14)
     pcall(function()
+    if _MarketplaceService.SignalPromptProductPurchaseFinished then
         _MarketplaceService:SignalPromptProductPurchaseFinished(_LocalPlayer.UserId, p14, true)
+    end
+end)
 
         local v15, v16, v17 = ipairs({
             'PurchaseProduct',
@@ -60,8 +61,7 @@ local function u20(p14)
                 end
             end
         end
-    end)
-end
+    end
 local function u29()
     local v21 = {}
     local v22, v23 = pcall(function()
@@ -89,8 +89,9 @@ local function u29()
                 })
             end
 
-            if v23.IsFinished or not v23:AdvanceToNextPage() then
-            end
+           if v23.IsFinished or not v23:AdvanceToNextPage() then
+    break
+end
         end
     else
         return (#v21 <= 0 or not v21) and {
